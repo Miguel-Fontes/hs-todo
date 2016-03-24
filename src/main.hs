@@ -28,22 +28,23 @@ update (file, todo) = do
     putStrLn $  show todoItemList
         where todofy = map (\todo -> read todo :: Todo)
 
+-- Versão usando fmap
+list' :: Filename -> IO ()
+list' file = do
+    todoItems <- fmap (unlines . map todofy . lines) (readFile file)
+    putStr todoItems
+        where todofy todo = printify $ (read todo :: Todo)
+              printify todo = checkbox (done todo) ++ show (content todo)
+              checkbox status
+                  | status == True = "[ x ] - "
+                  | otherwise      = "[   ] - "
+
 list :: Filename -> IO ()
 list file = do
     contents <- readFile file
     let todoItemList =  todofy $ lines $ contents
     putStr $ unlines todoItemList
         where todofy = map (\todo -> printify $ (read todo :: Todo))
-              printify todo = checkbox (done todo) ++ show (content todo)
-              checkbox status
-                  | status == True = "[ x ] - "
-                  | otherwise      = "[   ] - "
-
-list' :: Filename -> IO ()
-list' file = do
-    todoItems <- fmap (unlines . map todofy . lines) (readFile file)
-    putStr todoItems
-        where todofy todo = printify $ (read todo :: Todo)
               printify todo = checkbox (done todo) ++ show (content todo)
               checkbox status
                   | status == True = "[ x ] - "
