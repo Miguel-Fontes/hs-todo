@@ -1,14 +1,3 @@
-Todo {id' = 1, content = "Tarefa 1", done = False}
-Todo {id' = 1, content = "Tarefa 2", done = True}
-Todo {id' = 1, content = "Tarefa 3", done = False}
-Todo {id' = 1, content = "Tarefa 4", done = False}
-Todo {id' = 1, content = "Tarefa 10", done = False}
-Todo {id' = 1, content = "Tarefa 10", done = False}
-Todo {id' = 1, content = "a", done = False}
-Todo {id' = 1, content = "a", done = False}
-Todo {id' = 1, content = "a", done = False}
-Todo {id' = 1, content = "a", done = False}
-Todo {id' = 1, content = "a", done = False}
-Todo {id' = 1, content = "Tarefa", done = False}
-Todo {id' = 1, content = "Tarefa", done = False}
-Todo {id' = 1, content = "Mais uma", done = False}
+Todo {id' = 1, content = "Teste", done = False}
+Todo {id' = 1, content = "Teste 2", done = False}
+Todo {id' = 1, content = "Teste 3", done = False}

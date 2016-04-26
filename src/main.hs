@@ -31,7 +31,7 @@ update (file, todo) = do
 -- Versão usando fmap
 list' :: Filename -> IO ()
 list' file = do
-    todoItems <- fmap (unlines . map todofy . lines) (readFile file)
+    todoItems <- (unlines . map todofy . lines) <$> (readFile file)
     putStr todoItems
         where todofy todo = printify $ (read todo :: Todo)
               printify todo = checkbox (done todo) ++ show (content todo)
@@ -49,29 +49,3 @@ list file = do
               checkbox status
                   | status == True = "[ x ] - "
                   | otherwise      = "[   ] - "
-
--- List
--- 1 - [   ] - Tarefa 1
--- 2 - [   ] - Tarefa 2
--- 3 - [   ] - Tarefa 3
-
--- Complete 3
--- 1 - [   ] - Tarefa 1
--- 2 - [   ] - Tarefa 2
--- 3 - [ x ] - Tarefa 3
-
--- Edit 2
--- "Task 2"
--- 1 - [   ] - Tarefa 1
--- 2 - [   ] - Task 2
--- 3 - [ x ] - Tarefa 3
-
--- Delete 1
--- 2 - [   ] - Task 2
--- 3 - [ x ] - Tarefa 3
-
--- Add
--- "Tarefa 4"
--- 2 - [   ] - Task 2
--- 3 - [ x ] - Tarefa 3
--- 4 - [ x ] - Tarefa 4
